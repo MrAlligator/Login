@@ -138,4 +138,12 @@ class Auth extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged</div>');
         redirect('auth');
     }
+
+    public function blocked()
+    {
+        $data['title'] = 'Access Blocked';
+        $this->load->view('templates/header', $data);
+        $this->load->view('auth/blocked');
+        $this->load->view('templates/footer');
+    }
 }
