@@ -3,10 +3,9 @@
 function is_logged_in()
 {
     $help = get_instance();
-    if(!$help->session->userdata('email')) {
+    if (!$help->session->userdata('email')) {
         redirect('auth');
-    } 
-    else {
+    } else {
         $role_id = $help->session->userdata('role_id');
         $menu = $help->uri->segment(1);
 
@@ -18,10 +17,8 @@ function is_logged_in()
             'menu_id' => $menu_id
         ]);
 
-        if($userAccess->num_rows() < 1) {
-            redirect('auth/blocked');
+        if ($userAccess->num_rows() < 1) {
+            redirect('blocked');
         }
-
     }
-
 }
